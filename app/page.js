@@ -36,7 +36,12 @@ export default function Home() {
       <VideoBanner />
       <HorizontalScroll />
       <CollectionSection />
-      <AnimeList animeData={data} page={page} setPage={setPage} />
+      <AnimeList
+        animeData={data}
+        page={page}
+        setPage={setPage}
+        total={data?.meta?.count}
+      />
     </MainContainer>
   );
 }
