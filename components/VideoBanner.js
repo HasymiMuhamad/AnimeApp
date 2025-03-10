@@ -3,6 +3,7 @@
 import styled from '@emotion/styled';
 import { Play, Info } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { BASE_URL_VIDEO_BANNER } from '@/app/constant';
 
 const BannerContainer = styled.div`
   position: relative;
@@ -68,7 +69,6 @@ const Button = styled.button`
   `}
 `;
 
-const baseVideoBannerUrl = "https://cdn.pixabay.com/video/2022/08/15/127915-739777024_large.mp4";
 
 export default function VideoBanner() {
   const router = useRouter();
@@ -76,7 +76,7 @@ export default function VideoBanner() {
   return (
     <BannerContainer>
       <BannerVideo autoPlay muted loop>
-        <source src={baseVideoBannerUrl} type="video/mp4" />
+        <source src={BASE_URL_VIDEO_BANNER()} type="video/mp4" />
       </BannerVideo>
       <BannerContent>
         <Title>Hunter x Hunter (2011)</Title>

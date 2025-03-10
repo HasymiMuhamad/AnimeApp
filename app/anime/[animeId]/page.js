@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams, useRouter } from 'next/navigation';
 import axios from 'axios';
 import { ArrowLeft } from 'lucide-react';
+import { BASE_API_ANIME_DETAIL } from '@/app/constant';
 
 const DetailContainer = styled.div`
   min-height: 100vh;
@@ -76,7 +77,7 @@ const AnimeInfo = styled.div`
 `;
 
 const fetchAnimeDetail = async (id) => {
-  const response = await axios.get(`https://kitsu.io/api/edge/anime/${id}`);
+  const response = await axios.get(BASE_API_ANIME_DETAIL(id));
   return response.data;
 };
 

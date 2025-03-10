@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import { BASE_API_ANIME_FILTERED } from '@/app/constant';
 
 const Container = styled.div`
   padding: 24px;
@@ -60,9 +61,7 @@ const AnimeCard = styled.div`
 `;
 
 const fetchFilteredAnime = async (category, sort) => {
-  const response = await axios.get(
-    `https://kitsu.io/api/edge/anime?filter[categories]=${category}&sort=${sort}`
-  );
+  const response = await axios.get(BASE_API_ANIME_FILTERED(category, sort));
   return response.data;
 };
 
