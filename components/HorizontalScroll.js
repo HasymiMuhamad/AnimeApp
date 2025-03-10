@@ -3,6 +3,7 @@
 import styled from '@emotion/styled';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
+import { BASE_API_ANIME_TRENDING } from '@/app/constant';
 import axios from 'axios';
 
 const ScrollContainer = styled.div`
@@ -55,7 +56,7 @@ const AnimeCard = styled.div`
 `;
 
 const fetchTrendingAnime = async () => {
-  const response = await axios.get('https://kitsu.io/api/edge/trending/anime');
+  const response = await axios.get(BASE_API_ANIME_TRENDING());
   return response.data;
 };
 

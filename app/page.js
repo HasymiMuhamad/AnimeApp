@@ -8,6 +8,7 @@ import VideoBanner from '@/components/VideoBanner';
 import AnimeList from '@/components/AnimeList';
 import HorizontalScroll from '@/components/HorizontalScroll';
 import CollectionSection from '@/components/CollectionSection';
+import { BASE_API_ANIME } from '@/app/constant';
 
 const MainContainer = styled.main`
   min-height: 100vh;
@@ -16,9 +17,7 @@ const MainContainer = styled.main`
 `;
 
 const fetchAnime = async (page = 0) => {
-  const response = await axios.get(
-    `https://kitsu.io/api/edge/anime?page[limit]=10&page[offset]=${page * 10}`
-  );
+  const response = await axios.get(BASE_API_ANIME(page));
   return response.data;
 };
 
