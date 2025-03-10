@@ -2,6 +2,8 @@
 
 import styled from '@emotion/styled';
 import { useRouter } from 'next/navigation';
+import ResponsivePagination from 'react-responsive-pagination';
+import 'react-responsive-pagination/themes/classic.css';
 
 const Container = styled.div`
   padding: 24px;
@@ -56,7 +58,7 @@ const Rating = styled.div`
   border-radius: 4px;
 `;
 
-const Pagination = styled.div`
+const PaginationBase = styled.div`
   display: flex;
   justify-content: center;
   gap: 16px;
@@ -77,7 +79,7 @@ const PageButton = styled.button`
   }
 `;
 
-export default function AnimeList({ animeData, page, setPage }) {
+export default function AnimeList({ animeData, page, setPage, total }) {
   const router = useRouter();
 
   return (
@@ -102,19 +104,13 @@ export default function AnimeList({ animeData, page, setPage }) {
           </Row>
         ))}
       </Table>
-      <Pagination>
-        <PageButton
-          onClick={() => setPage(p => Math.max(0, p - 1))}
-          disabled={page === 0}
-        >
-          Previous
-        </PageButton>
-        <PageButton
-          onClick={() => setPage(p => p + 1)}
-        >
-          Next
-        </PageButton>
-      </Pagination>
+      <PaginationBase>
+        <ResponsivePagination
+          total={total}
+          current={page}
+          onPageChange={page => setPage(page)}
+        />
+      </PaginationBase>
     </Container>
   );
 }
